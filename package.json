@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "ZORA - a privacy-focused desktop browser prototype",
   "main": "src/main.js",
-  "author": "ZORA",
+  "author": {
+  "name": "WIG Projects",
+  "email": "W.I.G_Projects@outlook.com"
+},
   "license": "MIT",
   "scripts": {
     "start": "electron .",

@@ -1,0 +1,50 @@
+const { contextBridge, ipcRenderer } = require("electron");
+function subscribe(channel, callback) {
+  const listener = (_event, data) => callback(data);
+  ipcRenderer.on(channel, listener);
+  return () => ipcRenderer.removeListener(channel, listener);
+}
+contextBridge.exposeInMainWorld("zora", {
+  openMenu: () => ipcRenderer.invoke("menu:open"),
+  toggleMenu: () => ipcRenderer.invoke("menu:toggle"),
+  closeMenu: () => ipcRenderer.invoke("menu:close"),
+  resizeMenu: expanded => ipcRenderer.invoke("menu:resize", !!expanded),
+  openDownloadsPanel: () => ipcRenderer.invoke("downloads:panel-open"),
+  closeDownloadsPanel: () => ipcRenderer.invoke("downloads:panel-close"),
+  openZMenu: () => ipcRenderer.invoke("zmenu:open"),
+  closeZMenu: () => ipcRenderer.invoke("zmenu:close"),
+  newTab: url => ipcRenderer.invoke("tab:new", url),
+  activateTab: id => ipcRenderer.invoke("tab:activate", id),
+  closeTab: id => ipcRenderer.invoke("tab:close", id),
+  reorderTabs: (sourceId, targetId, insertAfter) => ipcRenderer.invoke("tab:reorder", sourceId, targetId, insertAfter),
+  toggleTabMute: id => ipcRenderer.invoke("tab:toggle-mute", id),
+  listTabs: () => ipcRenderer.invoke("tabs:list"),
+  navigate: url => ipcRenderer.invoke("browser:navigate", url),
+  back: () => ipcRenderer.invoke("browser:back"),
+  forward: () => ipcRenderer.invoke("browser:forward"),
+  reload: () => ipcRenderer.invoke("browser:reload"),
+  home: () => ipcRenderer.invoke("browser:home"),
+  onTabsUpdate: callback => subscribe("tabs:update", callback),
+  onBrowserState: callback => subscribe("browser:state", callback),
+  onFocusAddress: callback => subscribe("browser:focus-address", callback),
+  listDownloads: () => ipcRenderer.invoke("downloads:list"),
+  cancelDownload: id => ipcRenderer.invoke("downloads:cancel", id),
+  openDownload: id => ipcRenderer.invoke("downloads:open", id),
+  showDownloadFolder: id => ipcRenderer.invoke("downloads:show-folder", id),
+  onDownloadsUpdate: callback => subscribe("downloads:update", callback),
+  onError: callback => subscribe("browser:error", callback),
+  togglePrivate: () => ipcRenderer.invoke("privacy:toggle"),
+  getPrivacyState: () => ipcRenderer.invoke("privacy:state"),
+  listHistory: () => ipcRenderer.invoke("history:list"),
+  clearHistory: () => ipcRenderer.invoke("history:clear"),
+  navigateHistory: url => ipcRenderer.invoke("history:navigate", url),
+  getTheme: () => ipcRenderer.invoke("theme:get"),
+  setTheme: theme => ipcRenderer.invoke("theme:set", theme),
+  onThemeUpdate: callback => subscribe("theme:update", callback),
+  onHistoryUpdate: callback => subscribe("history:update", callback),
+  onPrivacyUpdate: callback => subscribe("privacy:update", callback),
+  getSecurityState: () => ipcRenderer.invoke("security:get"),
+  setSecurityState: patch => ipcRenderer.invoke("security:set", patch),
+  clearBrowsingData: kind => ipcRenderer.invoke("security:clear-data", kind),
+  onSecurityUpdate: callback => subscribe("security:update", callback)
+});

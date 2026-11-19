@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZORA</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+<header class="chrome">
+  <div class="tabline">
+    <button id="brandHome" class="small-brand" type="button" title="Voltar ao início">ZORA</button>
+    <div id="tabs" class="tabs"></div>
+    <button id="newTab" class="new-tab" title="Novo separador (Ctrl+T)">+</button>
+    <div class="top-menu-wrap">
+      <button id="menuButton" class="menu-button" type="button" title="Menu ZORA" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="toolbar">
+    <div class="nav-buttons">
+      <button id="back" class="tool" title="Voltar" disabled>←</button>
+      <button id="forward" class="tool" title="Avançar" disabled>→</button>
+      <button id="reload" class="tool" title="Recarregar">↻</button>
+      <button id="home" class="tool" title="Início">⌂</button>
+    </div>
+    <form id="addressForm" class="address-wrap">
+      <span id="connectionIcon" class="connection-icon">⌕</span>
+      <input id="address" type="text" autocomplete="off" spellcheck="false" placeholder="Pesquisar ou escrever endereço">
+      <span id="loading" class="loading" hidden>A carregar</span>
+      <button class="go" type="submit">Ir</button>
+    </form>
+    <div class="right-actions">
+      <button id="zButton" class="z-button" type="button" title="Segurança e privacidade" aria-label="Abrir menu de segurança">
+        Z
+      </button>
+      <button id="downloadsButton" class="downloads-button" type="button" title="Transferências" aria-expanded="false">
+        ↓ <span>Transferências</span><span id="downloadsCount" class="downloads-count" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+<section id="menuPanel" class="menu-panel" hidden aria-label="Menu ZORA">
+  <div class="menu-title">Menu ZORA</div>
+  <button id="togglePrivate" class="menu-option" type="button">
+    <span class="menu-option-icon">◉</span><span class="menu-option-copy"><strong>Navegação anónima</strong><small id="privateDescription">Desativada</small></span><span id="privateState" class="menu-state">OFF</span>
+  </button>
+  <button id="showHistory" class="menu-option" type="button" aria-expanded="false">
+    <span class="menu-option-icon">◷</span><span class="menu-option-copy"><strong>Histórico</strong><small>Ver pesquisas e páginas visitadas</small></span><span class="menu-chevron">›</span>
+  </button>
+  <div id="historySection" class="history-section" hidden>
+    <input id="historySearch" class="history-search" type="search" placeholder="Pesquisar no histórico…" autocomplete="off">
+    <div class="history-heading"><strong>Recentes</strong><button id="clearHistory" type="button">Limpar</button></div>
+    <div id="historyList" class="history-list"><p class="history-empty">A carregar histórico…</p></div>
+  </div>
+  <div class="menu-divider"></div>
+  <button id="toggleTheme" class="menu-option" type="button">
+    <span id="themeIcon" class="menu-option-icon">☾</span><span class="menu-option-copy"><strong id="themeTitle">Modo escuro</strong><small id="themeDescription">Aparência clara ativa</small></span><span class="menu-chevron">↔</span>
+  </button>
+</section>
+<section id="downloadsPanel" class="downloads-panel" hidden aria-label="Transferências">
+  <div class="downloads-heading"><strong>Transferências</strong><button id="closeDownloads" type="button" title="Fechar">×</button></div>
+  <div id="downloadsList" class="downloads-list"><p class="downloads-empty">Ainda não existem transferências.</p></div>
+</section>
+<div id="notice" class="notice" role="status" aria-live="polite"></div>
+<script src="renderer.js"></script>
+</body>
+</html>

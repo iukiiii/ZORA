@@ -1,0 +1,58 @@
+{
+  "name": "zora-browser",
+  "version": "0.1.0",
+  "description": "ZORA - a privacy-focused desktop browser prototype",
+  "main": "src/main.js",
+  "author": "ZORA",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win nsis",
+    "dist:linux": "electron-builder --linux AppImage deb"
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.zora.browser",
+    "productName": "ZORA",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Network",
+      "icon": "build/icons",
+      "artifactName": "ZORA-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "asar": true,
+    "artifactName": "ZORA-Setup-${version}.${ext}"
+  },
+  "allowScripts": {
+    "electron@35.7.5": true,
+    "electron-winstaller@5.4.0": true
+  },
+  "dependencies": {
+    "@ghostery/adblocker-electron": "^2.20.3"
+  }
+}

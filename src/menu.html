@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self';">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu ZORA</title>
+<link rel="stylesheet" href="menu.css">
+</head>
+<body data-theme="light">
+<main class="menu-panel">
+  <div class="menu-title">Menu ZORA</div>
+  <button id="togglePrivate" class="menu-option" type="button">
+    <span class="menu-option-icon">◉</span><span class="menu-option-copy"><strong>Navegação anónima</strong><small id="privateDescription">Desativada</small></span><span id="privateState" class="menu-state">OFF</span>
+  </button>
+  <button id="showHistory" class="menu-option" type="button" aria-expanded="false">
+    <span class="menu-option-icon">◷</span><span class="menu-option-copy"><strong>Histórico</strong><small>Ver pesquisas e páginas visitadas</small></span><span class="menu-chevron">›</span>
+  </button>
+  <section id="historySection" class="history-section" hidden>
+    <input id="historySearch" class="history-search" type="search" placeholder="Pesquisar no histórico…" autocomplete="off">
+    <div class="history-heading"><strong>Recentes</strong><button id="clearHistory" type="button">Limpar</button></div>
+    <div id="historyList" class="history-list"><p class="history-empty">A carregar histórico…</p></div>
+  </section>
+  <div class="menu-divider"></div>
+  <button id="toggleTheme" class="menu-option" type="button">
+    <span id="themeIcon" class="menu-option-icon">☾</span><span class="menu-option-copy"><strong id="themeTitle">Modo escuro</strong><small id="themeDescription">Aparência clara ativa</small></span><span class="menu-chevron">↔</span>
+  </button>
+</main>
+<script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self';">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZORA — Segurança</title>
+<link rel="stylesheet" href="zmenu.css">
+</head>
+<body data-theme="light">
+<main class="z-panel">
+  <header class="z-header">
+    <span class="z-mark">Z</span>
+    <div class="z-heading"><strong>Segurança e privacidade</strong><small id="secureState">A verificar ligação…</small></div>
+    <button id="closeZ" type="button" aria-label="Fechar">×</button>
+  </header>
+  <section class="z-section">
+    <div class="section-title">Proteção durante a navegação</div>
+    <label class="z-option">
+      <span class="z-icon">◈</span><span class="z-copy"><strong>Ad-Blocker</strong><small>Filtra anúncios através da lista EasyList</small></span>
+      <input id="adBlockEnabled" type="checkbox" class="switch">
+    </label>
+    <label class="z-option">
+      <span class="z-icon">⌁</span><span class="z-copy"><strong>Anti-Tracking</strong><small>Filtra rastreadores através da lista EasyPrivacy</small></span>
+      <input id="antiTrackingEnabled" type="checkbox" class="switch">
+    </label>
+    <div class="stats"><span>Anúncios bloqueados <b id="blockedAds">0</b></span><span>Rastreadores bloqueados <b id="blockedTrackers">0</b></span></div>
+    <small id="filterStatus" class="filter-status" aria-live="polite">A preparar filtros…</small>
+  </section>
+  <section class="z-section">
+    <div class="section-title">Gestor de permissões</div>
+    <p class="hint">Escolhe o que os sites podem pedir durante a navegação.</p>
+    <div class="permission-list">
+      <label class="permission"><span class="permission-symbol">▣</span><span class="permission-copy"><strong>Câmara</strong><small>Acesso à câmara</small></span><input type="checkbox" data-permission="camera" class="permission-switch"></label>
+      <label class="permission"><span class="permission-symbol">◖</span><span class="permission-copy"><strong>Microfone</strong><small>Acesso ao microfone</small></span><input type="checkbox" data-permission="microphone" class="permission-switch"></label>
+      <label class="permission"><span class="permission-symbol">⌖</span><span class="permission-copy"><strong>Localização</strong><small>Conhecer a tua localização</small></span><input type="checkbox" data-permission="geolocation" class="permission-switch"></label>
+      <label class="permission"><span class="permission-symbol">♧</span><span class="permission-copy"><strong>Notificações</strong><small>Enviar notificações</small></span><input type="checkbox" data-permission="notifications" class="permission-switch"></label>
+    </div>
+  </section>
+  <section class="z-section">
+    <div class="section-title">Dados de navegação</div>
+    <div class="clear-actions">
+      <button id="clearCache" type="button">Limpar cookies e cache</button>
+      <button id="clearHistory" type="button">Limpar histórico</button>
+    </div>
+    <small id="actionStatus" class="action-status" aria-live="polite"></small>
+  </section>
+  <section class="z-section vpn-row">
+    <span class="z-icon">◉</span><span class="z-copy"><strong>VPN</strong><small>Ainda não disponível. Não existe VPN ativa.</small></span>
+    <span class="coming">EM BREVE</span>
+  </section>
+  <footer>ZORA Secure · Proteção local do navegador</footer>
+</main>
+<script src="zmenu.js"></script>
+</body>
+</html>
